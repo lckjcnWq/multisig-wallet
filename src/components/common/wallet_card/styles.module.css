@@ -1,0 +1,27 @@
+.container {
+  @apply max-w-md mx-auto;
+}
+
+.header {
+  @apply flex justify-between items-center p-4 border-b border-gray-700;
+}
+
+.avatar {
+  @apply w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center;
+}
+
+.infoWrapper {
+  @apply flex items-center space-x-2;
+}
+
+.balanceCard {
+  @apply p-4;
+}
+
+.balanceGrid {
+  @apply grid grid-cols-2 gap-4;
+}
+
+.actionButtons {
+  @apply grid grid-cols-2 gap-4 p-4;
+} 
