@@ -1,19 +1,20 @@
 interface CardProps {
-  variant?: 'primary' | 'secondary';
   children: React.ReactNode;
   className?: string;
 }
 
-const Card = ({ variant = 'primary', children, className }: CardProps) => {
-  const baseStyles = 'rounded-lg overflow-hidden';
-  
-  const variantStyles = {
-    primary: 'bg-gray-800',
-    secondary: 'bg-gray-900'
-  };
-
+export const Card: React.FC<CardProps> = ({ children, className }) => {
   return (
-    <div className={`${baseStyles} ${variantStyles[variant]} ${className}`}>
+    <div className={`
+      p-4
+      sm:p-6
+      md:p-8
+      rounded-xl
+      shadow-lg
+      w-full
+      sm:w-auto
+      ${className || ''}
+    `}>
       {children}
     </div>
   );

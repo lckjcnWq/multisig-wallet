@@ -1,32 +1,24 @@
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'success' | 'warning';
-  size?: 'sm' | 'md' | 'lg';
+interface ButtonProps {
   children: React.ReactNode;
+  onClick?: () => void;
+  className?: string;
 }
 
-const Button = ({ variant = 'primary', size = 'md', children, className, ...props }: ButtonProps) => {
-  const baseStyles = 'text-white rounded-lg';
-  
-  const variantStyles = {
-    primary: 'bg-blue-500 hover:bg-blue-600',
-    success: 'bg-green-500 hover:bg-green-600', 
-    warning: 'bg-yellow-500 hover:bg-yellow-600'
-  };
-
-  const sizeStyles = {
-    sm: 'px-2 py-1 text-sm',
-    md: 'px-4 py-2',
-    lg: 'px-6 py-3 text-lg'
-  };
-
+export const Button: React.FC<ButtonProps> = ({ children, onClick, className }) => {
   return (
     <button
-      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
-      {...props}
+      onClick={onClick}
+      className={`
+        px-4 py-2
+        sm:px-6 sm:py-3
+        md:px-8 md:py-4
+        text-sm sm:text-base
+        rounded-lg
+        transition-all
+        ${className || ''}
+      `}
     >
       {children}
     </button>
   );
-};
-
-export default Button; 
+}; 

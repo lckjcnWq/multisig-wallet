@@ -1,29 +1,18 @@
 interface TextProps {
-  variant?: 'primary' | 'secondary' | 'warning';
-  size?: 'sm' | 'md' | 'lg' | 'xl';
   children: React.ReactNode;
   className?: string;
 }
 
-const Text = ({ variant = 'primary', size = 'md', children, className }: TextProps) => {
-  const variantStyles = {
-    primary: 'text-white',
-    secondary: 'text-gray-400',
-    warning: 'text-yellow-400'
-  };
-
-  const sizeStyles = {
-    sm: 'text-sm',
-    md: 'text-base',
-    lg: 'text-lg',
-    xl: 'text-2xl'
-  };
-
+export const Text: React.FC<TextProps> = ({ children, className }) => {
   return (
-    <p className={`${variantStyles[variant]} ${sizeStyles[size]} ${className}`}>
+    <p className={`
+      text-sm 
+      sm:text-base 
+      md:text-lg
+      leading-relaxed
+      ${className || ''}
+    `}>
       {children}
     </p>
   );
-};
-
-export default Text; 
+}; 
